@@ -3,16 +3,11 @@
 > All data analysis are performed using R and the following packages are used: `opendatatoronto`, `tidyverse`, `kableExtra`.
 > Link to data source: https://open.toronto.ca/dataset/police-annual-statistical-report-reported-crimes/
 
-## Table of Contents
+## Main Contributions
 
 <!-- toc -->
 
-* [Requirements](#requirements)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Anonymous vs authenticated session](#anonymous-vs-authenticated-session)
-* [Rate limiting](#rate-limiting)
-* [Filters](#filters)
-* [Company filter](#company-filter)
-* [Logging](#logging)
-* [License](#license)
+* Outputs: "Paper.Rmd" puts together a detailed report connecting the dots between all analysis conducted.
+* Scripts: "00_crime_rate_data_import.R" and "01_crime_rate_data_clean.R" to generate "raw_data.csv" and "clean_data.csv" as inputs
+* Inputs: stores "raw_data.csv" and "clean_data.csv" and all the literatures referenced in pdf format
+
