@@ -9,5 +9,5 @@
 
 * Outputs: "Paper.Rmd" puts together a detailed report connecting the dots between all analysis conducted.
 * Scripts: "00_crime_rate_data_import.R" and "01_crime_rate_data_clean.R" to generate "raw_data.csv" and "clean_data.csv" as inputs
-* Inputs: stores "raw_data.csv" and "clean_data.csv" and all the literatures referenced in pdf format
+* Inputs: stores "raw_data.csv" and "clean_data.csv"
 
