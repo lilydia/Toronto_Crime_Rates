@@ -6,8 +6,10 @@
 ## Main Contributions
 
 <!-- toc -->
-
-* Outputs: "Paper.Rmd" puts together a detailed report connecting the dots between all analysis conducted.
-* Scripts: "00_crime_rate_data_import.R" and "01_crime_rate_data_clean.R" to generate "raw_data.csv" and "clean_data.csv" as inputs
-* Inputs: stores "raw_data.csv" and "clean_data.csv"
+* [Data Analysis of Crime Statistics | Paper](https://github.com/lilydia/Toronto_Crime_Rates/blob/main/outputs/paper/paper.pdf)
+* [Data Analysis of Crime Statistics | R Markdown Code](https://github.com/lilydia/Toronto_Crime_Rates/blob/main/outputs/paper/paper.Rmd)
+* [Data Analysis of Crime Statistics | References](https://github.com/lilydia/Toronto_Crime_Rates/blob/main/outputs/paper/paper.Rmd)
+* [Data Analysis of Crime Statistics | Dataset](https://github.com/lilydia/Toronto_Crime_Rates/blob/main/inputs/data/clean_data.csv)
+* The folder Scripts contains "00_crime_rate_data_import.R" and "01_crime_rate_data_clean.R" that are used to generate data files "raw_data.csv" and "clean_data.csv" 
+* The folder Inputs stores "raw_data.csv" and "clean_data.csv"
 
