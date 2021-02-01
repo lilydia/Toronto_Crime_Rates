@@ -65,6 +65,8 @@ In crime statistics, an offense is cleared if one person has been arrested, char
 # Suppress summarise info
 options(dplyr.summarise.inform = FALSE)
 
+#aggregate data to put into a table:
+#total reported cases, total cleared cases, and percentage cleared grouped by different years
 crimes_year <- 
   clean_data %>%
   group_by(reported_year) %>% 
@@ -73,6 +75,8 @@ crimes_year <-
     Percent_Cleared = signif(sum(count_cleared)/sum(count),2)
   )
 
+#display the aggregated table with specified column names
+#package kableExtra used here
 crimes_year %>% 
   knitr::kable(
     col.names = c("Year", "Cases Committed", "Cases Cleared", "Percent Cleared"),
@@ -92,6 +96,8 @@ year <- length(unique(clean_data$reported_year))
 # Suppress summarise info
 options(dplyr.summarise.inform = FALSE)
 
+#aggregate data to put into a table:
+#Average reported cases, average cleared cases, and percentage cleared grouped by different categories
 crimes_category <- 
   clean_data %>%
   group_by(category) %>% 
@@ -100,6 +106,8 @@ crimes_category <-
     Average_Percent_Cleared = signif(sum(count_cleared)/sum(count),2)
   )
 
+#display the aggregated table with specified column names
+#package kableExtra used here
 crimes_category %>% 
   knitr::kable(
     col.names = c("Category", "Cases Committed", "Cases Cleared", "Percent Cleared"),
@@ -113,16 +121,17 @@ Furthermore, Figure \@ref(fig:time) looks at the progression of each crime categ
 
 ```{r time, fig.width=10, fig.height=7, fig.cap="Total Annual Cases Plotted by Crime Categories (2014-2019)", echo = FALSE}
 
-# Load dataset
+# Plot reported crimes over time (x-axis is years reported, y-axis is number of reported cases)
 clean_data %>%
-  ggplot(aes(x = reported_year, y = count)) +
+  ggplot(aes(x = reported_year, y = count)) + 
       geom_bar(stat = "identity", fill = "darkorchid4") +
+  # Do the same graph over the 6 crime categories
   facet_wrap(~ category, ncol = 2) +
       labs(title = "Total Annual Cases (2014-2019)",
            subtitle = "Data plotted by crime types",
            y = "Number of Cases Reported",
            x = "Year") + theme_bw(base_size = 15) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) #rotate x-axis labels to display vertically
 
 ```
 
@@ -130,7 +139,8 @@ A deeper dive into crimes against property is presented in Figure \@ref(fig:repo
 
 ```{r report, fig.width=10, fig.height=5, fig.cap="Total Reported Crime Cases (2014-2019)", echo = FALSE}
 
-
+# aggregate data for plotting:
+# number of reported crimes by year and subtype
 crimes_over_time <- 
   clean_data %>% 
   filter(category == "Crimes Against Property") %>% 
@@ -139,6 +149,7 @@ crimes_over_time <-
     reported_cases = sum(count)
   )
 
+# Plot the aggregation of reported crimes over time (by subtype)
 ggplot( data = crimes_over_time, mapping =  aes(x = reported_year, y = reported_cases) ) +
   geom_line( aes(color=subtype)) +
   geom_point( aes(color=subtype)) +
@@ -150,6 +161,9 @@ ggplot( data = crimes_over_time, mapping =  aes(x = reported_year, y = reported_
 
 ```{r cleared, fig.width=10, fig.height=5, fig.cap="Total Cleared Crime Cases (2014-2019)", echo = FALSE, regfloat=TRUE}
 
+
+# aggregate data for plotting:
+# number of cleared crimes by year and subtype
 crimes_over_time <- 
   clean_data %>% 
   filter(category == "Crimes Against Property") %>% 
@@ -158,6 +172,7 @@ crimes_over_time <-
     reported_cases = sum(count_cleared)
   )
 
+# Plot the aggregation of cleared crimes over time (by subtype)
 ggplot( data = crimes_over_time, mapping =  aes(x = reported_year, y = reported_cases) ) +
   geom_line( aes(color=subtype)) +
   geom_point( aes(color=subtype)) +
